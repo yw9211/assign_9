@@ -10,8 +10,10 @@
     <script>
     $(document).ready(function(){
         $.getJSON("songlist.json", function(data){
-            console.log(data[0].title); 
-            console.log(data[1].artist); 
+          var dataString = JSON.stringify(data);
+          document.write(dataString + "<br>");
+            
+            
         }).fail(function(){
             console.log("An error has occurred.");
         });
