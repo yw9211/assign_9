@@ -7,8 +7,9 @@
 </script>
 </head> 
 <body>
-    <script>
-    $(document).ready(function(){
+    <script language="javascript">
+    function makeTable() 
+    {
         $.getJSON("songlist.json", function(data){
           //Display data as complete string
           var dataString = JSON.stringify(data);
@@ -19,16 +20,19 @@
           songs.forEach(function(song) { 
 				  tableInfo += "<tr><td>" + song.title + "</td><td>" + song.artist + "</td><td>" + song.genre + "</td><td>" + song.release + "</td>/<tr>";
 				  })                     
-          document.write("<table><tr><th>Song</th><th>Artist</th><th>Genre</th><th>Release</th></tr>" + tableInfo + "</table>");
-            
+          fullTable = "<table><tr><th>Song</th><th>Artist</th><th>Genre</th><th>Release</th></tr>" + tableInfo + "</table>";
+          //return values to write on page
+          complete = dataString + "<br>" + fullTable;
+          return complete;            
         }).fail(function(){
             console.log("An error has occurred.");
         });
-    });
+    }
     
-    function filterGenre() {
+    function filterGenre() 
+    {
       var g = document.getElementById("genre").value;
-      
+      alert (g);
       $.getJSON("songlist.json", function(data){     
         var songs = data;
         var filteredSongs = "";
@@ -44,6 +48,11 @@
     }
     
     </script> 
+    <h1>JSON Songlist</h1>
+    <script type="text/javascript">
+      var s = makeTable();
+      document.writeln(s);
+    </script>
     <form>
       <label for="genre">Choose a genre:</label>
       <select name="genre" id="genre">
