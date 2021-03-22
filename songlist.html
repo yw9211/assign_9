@@ -29,7 +29,6 @@
     function filterGenre() 
     {
       var g = document.getElementById("genre").value;
-      alert (g);
       $.getJSON("songlist.json", function(data){     
         var songs = data;
         var filteredSongs = "";
