@@ -49,10 +49,6 @@
     
     </script> 
     <h1>JSON Songlist</h1>
-    <script type="text/javascript">
-      var s = makeTable();
-      document.writeln(s);
-    </script>
     <form>
       <label for="genre">Choose a genre:</label>
       <select name="genre" id="genre">
@@ -64,5 +60,9 @@
       <button onclick="filterGenre()">Filter</button>
       <div id="songNames"></div>
     </form>
+    <script type="text/javascript">
+      var s = makeTable();
+      document.writeln(s);
+    </script>
 </body>
 </html>
