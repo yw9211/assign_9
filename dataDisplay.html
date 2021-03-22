@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>JSON songlist</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+</script>
+<script language="javascript">
+    function makeTable() 
+    {
+        $.getJSON("songlist.json", function(data){
+          //Display data as complete string
+          var dataString = JSON.stringify(data);
+	  document.write(dataString + "<br><br>");
+          //Display in user table format          
+          var songs = JSON.parse(dataString);
+          var tableInfo = "";
+          songs.forEach(function(song) { 
+				  tableInfo += "<tr><td>" + song.title + "</td><td>" + song.artist + "</td><td>" + song.genre + "</td><td>" + song.release + "</td>/<tr>";
+				  })                     
+          document.write("<table><tr><th>Song</th><th>Artist</th><th>Genre</th><th>Release</th></tr>" + tableInfo + "</table>");           
+        }).fail(function(){
+            console.log("An error has occurred.");
+        });
+    }
+    </script> 
+</head> 
+<body>
+    <script type="text/javascript">
+      makeTable();
+    </script>
+</body>
+</html>
